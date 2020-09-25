@@ -12,6 +12,7 @@ int main()
 	string autoModel;
 	cout << "Enter the model of auto ";
 	cin >> autoModel;
+
 	cout <<  endl << "Enter the car mileage of auto " << endl;
 	int carMileage;
 	cin >> carMileage;
@@ -69,10 +70,12 @@ int main()
 	int count = 108;
 	cout << endl;
 	cout << endl;
-	WithTrailer wT(trailerId);
-	WithoutTrailer woT(carMileage);
-	PassengerCar pass(carMileage, classOfAuto);
-	Auto *park[3];
+	WithTrailer wT(trailerId, autoModel);
+	cin >> autoModel;
+	WithoutTrailer woT(carMileage, autoModel);
+	cin >> autoModel;
+	PassengerCar pass(carMileage, classOfAuto, autoModel);
+	Auto **park = new Auto*[3];
 	park[0] = &wT;
 	park[1] = &woT;
 	park[2] = &pass;
@@ -80,6 +83,7 @@ int main()
 	for (int i = 0; i < 3; i++)
 	{
 		park[i]->showInformaiton();
+		park[i]->anything();
 		cout << endl;
 	}
 	std::cout << "Hello World!\n";
